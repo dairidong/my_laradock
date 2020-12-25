@@ -917,6 +917,61 @@ RUN if [ ${INSTALL_XMLRPC} = true ]; then \
 ;fi
 
 ###########################################################################
+# YAF:
+###########################################################################
+
+ARG INSTALL_YAF=false
+
+RUN if [ ${INSTALL_YAF} = true ]; then \
+pecl install yaf && \
+docker-php-ext-enable yaf \
+;fi
+
+COPY ./yaf.ini /usr/local/etc/php/conf.d
+
+###########################################################################
+# YAR:
+###########################################################################
+
+ARG INSTALL_YAR=false
+
+RUN if [ ${INSTALL_YAR} = true ]; then \
+apt-get install -y libcurl4-gnutls-dev && \
+pecl install yar && \
+docker-php-ext-enable yar \
+;fi
+
+COPY ./yar.ini /usr/local/etc/php/conf.d
+
+
+###########################################################################
+# YAC:
+###########################################################################
+
+ARG INSTALL_YAC=false
+
+RUN if [ ${INSTALL_YAC} = true ]; then \
+pecl install yac && \
+docker-php-ext-enable yac \
+;fi
+
+COPY ./yac.ini /usr/local/etc/php/conf.d
+
+###########################################################################
+# YAR:
+###########################################################################
+
+ARG INSTALL_YACONF=false
+
+RUN if [ ${INSTALL_YACONF} = true ]; then \
+pecl install yaconf && \
+docker-php-ext-enable yaconf \
+;fi
+
+COPY ./yaconf.ini /usr/local/etc/php/conf.d
+
+
+###########################################################################
 # Check PHP version:
 ###########################################################################
 
