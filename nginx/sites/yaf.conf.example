@@ -14,8 +14,13 @@ server {
     index index.php index.html index.htm;
 
     if (!-e $request_filename) {
-        rewrite ^/(.*)  /index.php?$1 last;
+        rewrite ^/(.*)  /index.php/$1 last;
     }
+
+    # 如果上面的无法匹配路由，使用下面的
+    # if (!-e $request_filename) {
+    #     rewrite ^/(.*)  /index.php?$1 last;
+    # }
 
     location ~ \.php$ {
         fastcgi_pass php-upstream;
