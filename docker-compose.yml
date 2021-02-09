@@ -247,6 +247,7 @@ services:
           - INSTALL_YAR=${PHP_FPM_INSTALL_YAR}
           - INSTALL_YAC=${PHP_FPM_INSTALL_YAC}
           - INSTALL_YACONF=${PHP_FPM_INSTALL_YACONF}
+          - INSTALL_SEASLOG=${PHP_FPM_INSTALL_SEASLOG}
           - PUID=${PHP_FPM_PUID}
           - PGID=${PHP_FPM_PGID}
           - LOCALE=${PHP_FPM_DEFAULT_LOCALE}
@@ -1214,6 +1215,7 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
+        - "rpc.mty.com:${DOCKER_HOST_IP}"
       ports:
         - 9010:9000
       networks:

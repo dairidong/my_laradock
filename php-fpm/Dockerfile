@@ -970,6 +970,19 @@ docker-php-ext-enable yaconf \
 
 COPY ./yaconf.ini /usr/local/etc/php/conf.d
 
+###########################################################################
+# SEASLOG:
+###########################################################################
+
+ARG INSTALL_SEASLOG=false
+
+RUN if [ ${INSTALL_SEASLOG} = true ]; then \
+pecl install seaslog && \
+docker-php-ext-enable seaslog \
+;fi
+
+COPY ./seaslog.ini /usr/local/etc/php/conf.d
+
 
 ###########################################################################
 # Check PHP version:
